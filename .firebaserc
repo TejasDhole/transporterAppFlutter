@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "liveasytransporterapp"
+    "default": "liveasy-transporter"
   },
   "targets": {
-    "liveasytransporterapp": {
+    "liveasy-transporter": {
       "hosting": {
-        "liveasytransporterapp": [
-          "liveasytransporterapp"
+        "liveasy-transporter": [
+          "liveasy-transporter"
         ]
       }
     }
