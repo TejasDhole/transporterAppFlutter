@@ -1,16 +1,10 @@
 {
   "hosting": {
     "public": "build/web",
-    "target": "liveasytransporterapp",
+    "target": "liveasy-transporter",
     "ignore": [
       "firebase.json",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
     ]
   }
 }
