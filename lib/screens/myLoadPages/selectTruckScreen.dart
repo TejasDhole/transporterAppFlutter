@@ -223,8 +223,12 @@ class _SelectTruckScreenState extends State<SelectTruckScreen> {
                                               Container(
                                                 width: 540,
                                                 height: 280,
-                                                child:
-                                                    AddNewTruck("selectTruck"),
+                                                child: AddNewTruck(
+                                                  "selectTruck",
+                                                  widget.loadDetailsScreenModel,
+                                                  widget.driverName,
+                                                  widget.driverPhoneNo,
+                                                ),
                                               )
                                             ],
                                           );
@@ -232,8 +236,12 @@ class _SelectTruckScreenState extends State<SelectTruckScreen> {
                                     : Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              AddNewTruck("selectTruck"),
+                                          builder: (context) => AddNewTruck(
+                                            "selectTruck",
+                                            widget.loadDetailsScreenModel,
+                                            widget.driverName,
+                                            widget.driverPhoneNo,
+                                          ),
                                         ),
                                       );
                               },
@@ -480,8 +488,12 @@ class _SelectTruckScreenState extends State<SelectTruckScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        AddNewTruck("selectTruck"),
+                                    builder: (context) => AddNewTruck(
+                                      "selectTruck",
+                                      widget.loadDetailsScreenModel,
+                                      widget.driverName,
+                                      widget.driverPhoneNo,
+                                    ),
                                   ),
                                 );
                               },

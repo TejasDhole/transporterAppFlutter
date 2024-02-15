@@ -11,9 +11,9 @@ import 'package:liveasy/constants/screens.dart';
 import 'package:liveasy/constants/spaces.dart';
 import 'package:liveasy/functions/mapUtils/getLoactionUsingImei.dart';
 import 'package:liveasy/responsive.dart';
-import 'package:liveasy/screens/TruckScreens/AddNewTruck/truckNumberRegistration.dart';
 import 'package:liveasy/screens/updateBookingDetails.dart';
 import 'package:liveasy/screens/updateBookingDetailsScreen.dart';
+import 'package:liveasy/widgets/addTruck.dart';
 import 'package:liveasy/widgets/buttons/backButtonWidget.dart';
 import 'package:liveasy/widgets/headingTextWidget.dart';
 
@@ -189,8 +189,12 @@ class _UpdateTruckScreenState extends State<UpdateTruckScreen> {
                                               Container(
                                                 width: 540,
                                                 height: 280,
-                                                child:
-                                                    AddNewTruck("selectTruck"),
+                                                child: AddTruck(
+                                                  "updateTruck",
+                                                  widget.driverName,
+                                                  widget.driverPhoneNo,
+                                                  widget.loadAllDataModel,
+                                                ),
                                               )
                                             ],
                                           );
@@ -198,8 +202,12 @@ class _UpdateTruckScreenState extends State<UpdateTruckScreen> {
                                     : Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              AddNewTruck("selectTruck"),
+                                          builder: (context) => AddTruck(
+                                            "updateTruck",
+                                            widget.driverName,
+                                            widget.driverPhoneNo,
+                                            widget.loadAllDataModel,
+                                          ),
                                         ),
                                       );
                               },
@@ -439,8 +447,12 @@ class _UpdateTruckScreenState extends State<UpdateTruckScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        AddNewTruck("selectTruck"),
+                                    builder: (context) => AddTruck(
+                                      "updateTruck",
+                                      widget.driverName,
+                                      widget.driverPhoneNo,
+                                      widget.loadAllDataModel,
+                                    ),
                                   ),
                                 );
                               },

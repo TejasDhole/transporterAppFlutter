@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:liveasy/constants/color.dart';
 import 'package:liveasy/constants/screens.dart';
+import 'package:liveasy/constants/spaces.dart';
 import 'package:liveasy/constants/transporter_nav_icons.dart';
 import 'package:liveasy/controller/navigationIndexController.dart';
 import 'package:liveasy/controller/transporterIdController.dart';
@@ -154,9 +155,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
             : null,
         key: scaffoldKey,
         appBar: AppBar(
-          leading: null,
           backgroundColor: bidBackground,
-          title: Row(
+          leadingWidth: space_50,
+          leading: Row(
             children: [
               TextButton(
                 onPressed: () {

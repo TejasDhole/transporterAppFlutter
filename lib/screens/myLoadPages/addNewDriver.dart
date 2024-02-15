@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:liveasy/Web/dashboard.dart';
 import 'package:liveasy/constants/color.dart';
 import 'package:liveasy/constants/fontSize.dart';
 import 'package:liveasy/constants/fontWeights.dart';
 import 'package:liveasy/constants/radius.dart';
+import 'package:liveasy/constants/screens.dart';
 import 'package:liveasy/constants/spaces.dart';
 import 'package:liveasy/controller/transporterIdController.dart';
 import 'package:liveasy/functions/postDriverTraccarApi.dart';
@@ -14,7 +16,6 @@ import 'package:liveasy/models/loadDetailsScreenModel.dart';
 import 'package:liveasy/responsive.dart';
 import 'package:liveasy/screens/myLoadPages/confirmBookingDetails.dart';
 import 'package:liveasy/widgets/HeadingTextWidgetBlue.dart';
-import 'package:liveasy/widgets/alertDialog/trackingNotAvailableAlert.dart';
 import 'package:liveasy/widgets/buttons/backButtonWidget.dart';
 import 'package:liveasy/widgets/elevatedButtonforAddNewDriver.dart';
 
@@ -438,63 +439,41 @@ class _AddNewDriverState extends State<AddNewDriver> {
       responseStatus = await postDriverTraccarApi(name, phoneno, transporterId);
       // send to next screen.
       if (responseStatus == 'successful') {
-        Navigator.pushReplacement(
-          context,
-          new MaterialPageRoute(
-            builder: (context) => ConfirmBookingDetails(
-              selectedTruck: widget.selectedTruck,
-              selectedDeviceId: widget.selectedDeviceId,
-              driverName: name,
-              // 1st one will be available on the next screen and the 2nd one is the string that we are passing.
-              mobileNo: phoneno,
-              directBooking: true,
-              loadDetailsScreenModel: widget.loadDetailsScreenModel,
-            ),
-          ),
-        );
+        kIsWeb && Responsive.isDesktop(context)
+            ? Navigator.pushReplacement(
+                context,
+                new MaterialPageRoute(
+                    builder: (context) => DashboardScreen(
+                          visibleWidget: ConfirmBookingDetails(
+                            selectedTruck: widget.selectedTruck,
+                            selectedDeviceId: widget.selectedDeviceId,
+                            driverName: name,
+                            // 1st one will be available on the next screen and the 2nd one is the string that we are passing.
+                            mobileNo: phoneno,
+                            directBooking: true,
+                            loadDetailsScreenModel:
+                                widget.loadDetailsScreenModel,
+                          ),
+                          index: 1000,
+                          selectedIndex: screens.indexOf(ordersScreen),
+                        )),
+              )
+            : Navigator.pushReplacement(
+                context,
+                new MaterialPageRoute(
+                  builder: (context) => ConfirmBookingDetails(
+                    selectedTruck: widget.selectedTruck,
+                    selectedDeviceId: widget.selectedDeviceId,
+                    driverName: name,
+                    // 1st one will be available on the next screen and the 2nd one is the string that we are passing.
+                    mobileNo: phoneno,
+                    directBooking: true,
+                    loadDetailsScreenModel: widget.loadDetailsScreenModel,
+                  ),
+                ),
+              );
       } else {
         print("error , please try again");
-      }
-    } else {
-      setState(() {
-        _autovalidate = true;
-      });
-    }
-  }
-
-  Future<void> _sendToPreviousScreenWeb() async {
-    if (_key.currentState!.validate()) {
-      // saves to global key.
-      _key.currentState!.save();
-      String responseStatus;
-      responseStatus = await postDriverTraccarApi(name, phoneno, transporterId);
-      // send to next screen.
-      if (responseStatus == 'successful') {
-        Navigator.pushReplacement(
-          context,
-          new MaterialPageRoute(
-            builder: (context) => ConfirmBookingDetails(
-              selectedTruck: widget.selectedTruck,
-              selectedDeviceId: widget.selectedDeviceId,
-              driverName: name,
-              // 1st one will be available on the next screen and the 2nd one is the string that we are passing.
-              mobileNo: phoneno,
-              directBooking: true,
-              loadDetailsScreenModel: widget.loadDetailsScreenModel,
-            ),
-          ),
-        );
-      }
-      //if mobile number already exists this dialogbox will be shown
-      if (responseStatus == "Mobile number already exists") {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialogBox(
-              dialog: 'Driver is Already added',
-            );
-          },
-        );
       }
     } else {
       setState(() {

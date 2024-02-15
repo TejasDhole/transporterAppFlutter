@@ -14,10 +14,12 @@ import 'package:liveasy/functions/deviceApiCalls.dart';
 import 'package:liveasy/functions/driverApiCalls.dart';
 import 'package:liveasy/functions/truckApis/truckApiCalls.dart';
 import 'package:liveasy/models/loadDetailsScreenModel.dart';
+import 'package:liveasy/models/onGoingCardModel.dart';
 import 'package:liveasy/providerClass/providerData.dart';
 import 'package:liveasy/responsive.dart';
 import 'package:liveasy/screens/TruckScreens/AddNewTruck/truckDescriptionScreen.dart';
 import 'package:liveasy/screens/myLoadPages/selectTruckScreen.dart';
+import 'package:liveasy/screens/updateTruckScreen.dart';
 import 'package:liveasy/widgets/Header.dart';
 import 'package:liveasy/widgets/addTruckSubtitleText.dart';
 import 'package:liveasy/widgets/alertDialog/sameTruckAlertDialogBox.dart';
@@ -26,24 +28,24 @@ import 'package:liveasy/widgets/loadingWidget.dart';
 import 'package:provider/provider.dart';
 
 //TODO: loading widget while post executes
-class AddNewTruck extends StatefulWidget {
+class AddTruck extends StatefulWidget {
   late String fromScreen;
-  LoadDetailsScreenModel? loadDetailsScreenModel;
   String? driverName;
-  String? driverPhoneNo;
+  String? driverPhoneNum;
+  OngoingCardModel? loadAllDataModel;
 
-  AddNewTruck(
+  AddTruck(
     this.fromScreen,
-    this.loadDetailsScreenModel,
     this.driverName,
-    this.driverPhoneNo,
+    this.driverPhoneNum,
+    this.loadAllDataModel,
   );
 
   @override
   _AddNewTruckState createState() => _AddNewTruckState();
 }
 
-class _AddNewTruckState extends State<AddNewTruck> {
+class _AddNewTruckState extends State<AddTruck> {
   final _formKey = GlobalKey<FormState>();
 
   TextEditingController _controller = TextEditingController();
@@ -165,55 +167,35 @@ class _AddNewTruckState extends State<AddNewTruck> {
 
                                     final int random =
                                         new Random().nextInt(10000000 - 1) + 1;
-                                    print(random);
                                     providerData.updateTruckNumberValue(
                                         _controller.text);
                                     truckId = await postDeviceApi.PostDevice(
                                         //post truck no in device api with random uniqueid
                                         truckName: _controller.text,
                                         uniqueid: random.toString());
-                                    print("$truckId--------------------");
 
                                     if (truckId != null) {
                                       setState(() {
                                         loading = false;
                                       });
                                       providerData.updateResetActive(false);
-                                      if (widget.fromScreen == "myTrucks") {
-                                        Navigator.of(context).pushReplacement(
-                                            MaterialPageRoute(
-                                                builder: (context) => DashboardScreen(
-                                                    selectedIndex: screens
-                                                        .indexOf(auctionScreen),
-                                                    index: 1000,
-                                                    visibleWidget:
-                                                        TruckDescriptionScreen(
-                                                            truckId: truckId!,
-                                                            truckNumber:
-                                                                _controller
-                                                                    .text,
-                                                            truckUniqueId: random
-                                                                .toString()))));
-                                      } else if (widget.fromScreen ==
-                                          "selectTruck") {
+                                      if (widget.fromScreen == "updateTruck") {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     DashboardScreen(
                                                         selectedIndex:
                                                             screens.indexOf(
-                                                                auctionScreen),
+                                                                ordersScreen),
                                                         index: 1000,
                                                         visibleWidget:
-                                                            SelectTruckScreen(
+                                                            UpdateTruckScreen(
                                                           driverName:
                                                               widget.driverName,
                                                           driverPhoneNo: widget
-                                                              .driverPhoneNo,
-                                                          loadDetailsScreenModel:
-                                                              widget
-                                                                  .loadDetailsScreenModel!,
-                                                          directBooking: false,
+                                                              .driverPhoneNum,
+                                                          loadAllDataModel: widget
+                                                              .loadAllDataModel!,
                                                         ))));
                                       }
                                     } else {
@@ -336,14 +318,12 @@ class _AddNewTruckState extends State<AddNewTruck> {
                                       final int random =
                                           new Random().nextInt(10000000 - 1) +
                                               1;
-                                      print(random);
                                       providerData.updateTruckNumberValue(
                                           _controller.text);
                                       truckId = await postDeviceApi.PostDevice(
                                           //post truck no in device api with random uniqueid
                                           truckName: _controller.text,
                                           uniqueid: random.toString());
-                                      print("$truckId--------------------");
 
                                       if (truckId != null) {
                                         setState(() {
@@ -363,17 +343,11 @@ class _AddNewTruckState extends State<AddNewTruck> {
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       SelectTruckScreen(
-                                                        driverName:
-                                                            widget.driverName,
-                                                        driverPhoneNo: widget
-                                                            .driverPhoneNo,
                                                         loadDetailsScreenModel:
-                                                            widget
-                                                                .loadDetailsScreenModel!,
+                                                            LoadDetailsScreenModel(),
                                                         directBooking: false,
                                                       )));
                                         }
-                                        // print("hii ${truckId} and ${_controller.text}");
                                       } else {
                                         setState(() {
                                           loading = false;

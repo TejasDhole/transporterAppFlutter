@@ -1225,229 +1225,220 @@ class _documentUploadScreenWebState extends State<documentUploadScreenWeb> {
                                       padding: EdgeInsets.all(space_2),
                                       child: Material(
                                         elevation: 5,
-                                        child: Flexible(
-                                          child: SizedBox(
-                                            child: Container(
-                                              color: white,
-                                              child: Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                  vertical: space_4,
-                                                  horizontal: isMobile
-                                                      ? screenHeight * 0.001
-                                                      : screenWidth * 0.01,
-                                                ),
-                                                child: (loadData != null)
-                                                    ? Column(
-                                                        children: [
-                                                          Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Image(
-                                                                image: AssetImage(
-                                                                    'assets/icons/greenFilledCircleIcon.png'),
-                                                                height: space_2,
-                                                                width: space_2,
-                                                              ),
-                                                              SizedBox(
-                                                                  width:
-                                                                      space_4),
-                                                              Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    "${widget.loadingPoint}",
-                                                                    style: GoogleFonts
-                                                                        .montserrat(
-                                                                      color:
-                                                                          black,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      fontSize:
-                                                                          size_11,
-                                                                    ),
-                                                                  ),
-                                                                  Text(
-                                                                    wrapWords(
-                                                                      ' ${formatText(loadData?['loadingPoint'])}, ${loadData?['loadingPointCity']} , ${loadData?['loadingPointState']}',
-                                                                      50,
-                                                                    ),
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontSize:
-                                                                          size_8,
-                                                                      color:
-                                                                          darkBlueColor,
-                                                                    ),
-                                                                    maxLines: 5,
-                                                                    softWrap:
-                                                                        true,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .visible,
-                                                                  )
-                                                                ],
-                                                              ),
-                                                              SizedBox(
-                                                                  width:
-                                                                      space_4),
-                                                              Flexible(
-                                                                child:
-                                                                    Container(
-                                                                  child:
-                                                                      DottedLine(
-                                                                    lineThickness:
-                                                                        size_1,
-                                                                    dashColor:
-                                                                        liveasyGreen,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Flexible(
-                                                                child:
-                                                                    Container(
-                                                                  child:
-                                                                      DottedLine(
-                                                                    lineThickness:
-                                                                        size_1,
-                                                                    dashColor:
-                                                                        red,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              SizedBox(
-                                                                  width:
-                                                                      space_4),
-                                                              Image(
-                                                                image: AssetImage(
-                                                                    'assets/icons/hollowRedCircle.png'),
-                                                                height: space_2,
-                                                                width: space_2,
-                                                              ),
-                                                              SizedBox(
-                                                                  width:
-                                                                      space_4),
-                                                              Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    "${widget.unloadingPoint}",
-                                                                    style: GoogleFonts
-                                                                        .montserrat(
-                                                                      color:
-                                                                          black,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      fontSize:
-                                                                          size_11,
-                                                                    ),
-                                                                  ),
-                                                                  Text(
-                                                                    wrapWords(
-                                                                      ' ${formatText(loadData?['unloadingPoint'])}, ${loadData?['unloadingPointCity']} , ${loadData?['unloadingPointState']}',
-                                                                      50,
-                                                                    ),
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontSize:
-                                                                          size_8,
-                                                                      color:
-                                                                          darkBlueColor,
-                                                                    ),
-                                                                    maxLines: 5,
-                                                                    softWrap:
-                                                                        true,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .visible,
-                                                                  )
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-                                                          SizedBox(
-                                                              height: space_3),
-                                                          const Divider(
-                                                              thickness: 2),
-                                                          Padding(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                              vertical:
-                                                                  screenHeight /
-                                                                      90,
-                                                            ),
-                                                            child: Container(
-                                                              child: Padding(
-                                                                padding: EdgeInsets
-                                                                    .symmetric(
-                                                                  vertical:
-                                                                      20.0,
-                                                                  horizontal: isMobile
-                                                                      ? screenHeight *
-                                                                          0.001
-                                                                      : screenWidth *
-                                                                          0.01,
-                                                                ),
-                                                                child: Row(
-                                                                  children: [
-                                                                    SizedBox(
-                                                                        width:
-                                                                            50),
-                                                                    Image(
-                                                                        image: AssetImage(
-                                                                            'assets/icons/box.png')),
-                                                                    SizedBox(
-                                                                        width:
-                                                                            space_2),
-                                                                    Text(
-                                                                      "DOC",
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color:
-                                                                            veryDarkGrey,
-                                                                        fontSize:
-                                                                            20,
-                                                                        fontWeight:
-                                                                            mediumBoldWeight,
-                                                                      ),
-                                                                    ),
-                                                                    SizedBox(
-                                                                        width:
-                                                                            100),
-                                                                    Image(
-                                                                        image: AssetImage(
-                                                                            'assets/icons/truckDoc.png')),
-                                                                    SizedBox(
-                                                                        width:
-                                                                            space_2),
-                                                                    Text(
-                                                                      "${loadData?['weight']} tons | ${loadData?['truckType']} | ${loadData?['noOfTyres']} Tyres  ",
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color:
-                                                                            veryDarkGrey,
-                                                                        fontSize:
-                                                                            20,
-                                                                        fontWeight:
-                                                                            mediumBoldWeight,
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      )
-                                                    : Container(),
+                                        child: SizedBox(
+                                          child: Container(
+                                            color: white,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                vertical: space_4,
+                                                horizontal: isMobile
+                                                    ? screenHeight * 0.001
+                                                    : screenWidth * 0.01,
                                               ),
+                                              child: (loadData != null)
+                                                  ? Column(
+                                                      children: [
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Image(
+                                                              image: AssetImage(
+                                                                  'assets/icons/greenFilledCircleIcon.png'),
+                                                              height: space_2,
+                                                              width: space_2,
+                                                            ),
+                                                            SizedBox(
+                                                                width: space_4),
+                                                            Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Text(
+                                                                  "${widget.loadingPoint}",
+                                                                  style: GoogleFonts
+                                                                      .montserrat(
+                                                                    color:
+                                                                        black,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontSize:
+                                                                        size_11,
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  wrapWords(
+                                                                    ' ${formatText(loadData?['loadingPoint'])}, ${loadData?['loadingPointCity']} , ${loadData?['loadingPointState']}',
+                                                                    50,
+                                                                  ),
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        size_8,
+                                                                    color:
+                                                                        darkBlueColor,
+                                                                  ),
+                                                                  maxLines: 5,
+                                                                  softWrap:
+                                                                      true,
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .visible,
+                                                                )
+                                                              ],
+                                                            ),
+                                                            SizedBox(
+                                                                width: space_4),
+                                                            Flexible(
+                                                              child: Container(
+                                                                child:
+                                                                    DottedLine(
+                                                                  lineThickness:
+                                                                      size_1,
+                                                                  dashColor:
+                                                                      liveasyGreen,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Flexible(
+                                                              child: Container(
+                                                                child:
+                                                                    DottedLine(
+                                                                  lineThickness:
+                                                                      size_1,
+                                                                  dashColor:
+                                                                      red,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                                width: space_4),
+                                                            Image(
+                                                              image: AssetImage(
+                                                                  'assets/icons/hollowRedCircle.png'),
+                                                              height: space_2,
+                                                              width: space_2,
+                                                            ),
+                                                            SizedBox(
+                                                                width: space_4),
+                                                            Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Text(
+                                                                  "${widget.unloadingPoint}",
+                                                                  style: GoogleFonts
+                                                                      .montserrat(
+                                                                    color:
+                                                                        black,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontSize:
+                                                                        size_11,
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  wrapWords(
+                                                                    ' ${formatText(loadData?['unloadingPoint'])}, ${loadData?['unloadingPointCity']} , ${loadData?['unloadingPointState']}',
+                                                                    50,
+                                                                  ),
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        size_8,
+                                                                    color:
+                                                                        darkBlueColor,
+                                                                  ),
+                                                                  maxLines: 5,
+                                                                  softWrap:
+                                                                      true,
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .visible,
+                                                                )
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        SizedBox(
+                                                            height: space_3),
+                                                        const Divider(
+                                                            thickness: 2),
+                                                        Padding(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                            vertical:
+                                                                screenHeight /
+                                                                    90,
+                                                          ),
+                                                          child: Container(
+                                                            child: Padding(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                vertical: 20.0,
+                                                                horizontal: isMobile
+                                                                    ? screenHeight *
+                                                                        0.001
+                                                                    : screenWidth *
+                                                                        0.01,
+                                                              ),
+                                                              child: Row(
+                                                                children: [
+                                                                  SizedBox(
+                                                                      width:
+                                                                          50),
+                                                                  Image(
+                                                                      image: AssetImage(
+                                                                          'assets/icons/box.png')),
+                                                                  SizedBox(
+                                                                      width:
+                                                                          space_2),
+                                                                  Text(
+                                                                    "DOC",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color:
+                                                                          veryDarkGrey,
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontWeight:
+                                                                          mediumBoldWeight,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                      width:
+                                                                          100),
+                                                                  Image(
+                                                                      image: AssetImage(
+                                                                          'assets/icons/truckDoc.png')),
+                                                                  SizedBox(
+                                                                      width:
+                                                                          space_2),
+                                                                  Text(
+                                                                    "${loadData?['weight']} tons | ${loadData?['truckType']} | ${loadData?['noOfTyres']} Tyres  ",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color:
+                                                                          veryDarkGrey,
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontWeight:
+                                                                          mediumBoldWeight,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )
+                                                  : Container(),
                                             ),
                                           ),
                                         ),

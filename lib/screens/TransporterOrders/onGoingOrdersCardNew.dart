@@ -386,6 +386,7 @@ class _OngoingOrdersCardNewState extends State<onGoingOrdersCardNew> {
               ));
             },
             child: Card(
+              surfaceTintColor: transparent,
               elevation: 5,
               child: Column(
                 children: [

@@ -13,6 +13,7 @@ import 'package:liveasy/controller/transporterIdController.dart';
 import 'package:liveasy/functions/mapUtils/getLoactionUsingImei.dart';
 import 'package:liveasy/responsive.dart';
 import 'package:liveasy/screens/TransporterOrders/onGoingScreenOrders.dart';
+import 'package:liveasy/screens/ordersScreen.dart';
 import 'package:liveasy/screens/updateDriverScreen.dart';
 import 'package:liveasy/screens/updateTruckScreen.dart';
 import 'package:liveasy/widgets/HeadingTextWidgetBlue.dart';
@@ -65,7 +66,7 @@ class _UpdateBookingDetailsScreenState
   @override
   Widget build(BuildContext context) {
     return (kIsWeb && (Responsive.isDesktop(context)))
-    //Ui for Web
+        //Ui for Web
         ? Scaffold(
             backgroundColor: teamBar,
             body: SafeArea(
@@ -81,11 +82,11 @@ class _UpdateBookingDetailsScreenState
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Navigator.pop(
+                            Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => DashboardScreen(
-                                          visibleWidget: OngoingScreenOrders(),
+                                          visibleWidget: OrdersScreen(),
                                           index: 1000,
                                           selectedIndex:
                                               screens.indexOf(ordersScreen),
@@ -296,7 +297,7 @@ class _UpdateBookingDetailsScreenState
               ),
             ),
           )
-    //Ui for Mobile
+        //Ui for Mobile
         : Scaffold(
             backgroundColor: statusBarColor,
             body: SafeArea(

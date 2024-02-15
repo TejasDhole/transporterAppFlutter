@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:liveasy/Web/dashboard.dart';
 import 'package:liveasy/constants/color.dart';
 import 'package:liveasy/constants/fontSize.dart';
 import 'package:liveasy/constants/fontWeights.dart';
 import 'package:liveasy/constants/radius.dart';
+import 'package:liveasy/constants/screens.dart';
 import 'package:liveasy/constants/spaces.dart';
 import 'package:liveasy/controller/transporterIdController.dart';
 import 'package:liveasy/functions/postDriverTraccarApi.dart';
@@ -435,19 +437,36 @@ class _AddDriverState extends State<AddDriver> {
       responseStatus = await postDriverTraccarApi(name, phoneno, transporterId);
       // send to next screen.
       if (responseStatus == 'successful') {
-        Navigator.pushReplacement(
-          context,
-          new MaterialPageRoute(
-            builder: (context) => UpdateBookingDetails(
-              selectedTruck: widget.selectedTruck,
-              selectedDeviceId: widget.selectedDeviceId,
-              driverName:
-                  name, // 1st one will be available on the next screen and the 2nd one is the string that we are passing.
-              mobileNo: phoneno,
-              loadAllDataModel: widget.loadAllDataModel,
-            ),
-          ),
-        );
+        kIsWeb && Responsive.isDesktop(context)
+            ? Navigator.pushReplacement(
+                context,
+                new MaterialPageRoute(
+                    builder: (context) => DashboardScreen(
+                          visibleWidget: UpdateBookingDetails(
+                            selectedTruck: widget.selectedTruck,
+                            selectedDeviceId: widget.selectedDeviceId,
+                            driverName:
+                                name, // 1st one will be available on the next screen and the 2nd one is the string that we are passing.
+                            mobileNo: phoneno,
+                            loadAllDataModel: widget.loadAllDataModel,
+                          ),
+                          index: 1000,
+                          selectedIndex: screens.indexOf(ordersScreen),
+                        )),
+              )
+            : Navigator.pushReplacement(
+                context,
+                new MaterialPageRoute(
+                  builder: (context) => UpdateBookingDetails(
+                    selectedTruck: widget.selectedTruck,
+                    selectedDeviceId: widget.selectedDeviceId,
+                    driverName:
+                        name, // 1st one will be available on the next screen and the 2nd one is the string that we are passing.
+                    mobileNo: phoneno,
+                    loadAllDataModel: widget.loadAllDataModel,
+                  ),
+                ),
+              );
       }
       //if mobile number already exists alert dialogBox will be shown
       if (responseStatus == "Mobile number already exists") {

@@ -185,7 +185,6 @@ class _OngoingScreenOrdersState extends State<OngoingScreenOrders> {
                 Expanded(
                     flex: (Responsive.isMobile(context)) ? 8 : 5,
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: space_2),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(space_6),
                         color: white,
@@ -213,7 +212,7 @@ class _OngoingScreenOrdersState extends State<OngoingScreenOrders> {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.only(
-                              bottom: 0, left: 5, right: 5, top: 15),
+                              bottom: 0, left: 5, right: 5, top: 10),
                           prefixIcon:
                               const Icon(Icons.search, color: grey, size: 25),
                           hintText: "Search",

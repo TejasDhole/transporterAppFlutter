@@ -69,7 +69,7 @@ class _UpdateBookingDetailsState extends State<UpdateBookingDetails> {
   Widget build(BuildContext context) {
     SnackBar snackBar = SnackBar(content: Text('Hello World'));
     return (kIsWeb && (Responsive.isDesktop(context)))
-    //Ui for desktop
+        //Ui for desktop
         ? Scaffold(
             backgroundColor: teamBar,
             body: SafeArea(
@@ -149,7 +149,7 @@ class _UpdateBookingDetailsState extends State<UpdateBookingDetails> {
                                     MaterialPageRoute(
                                         builder: (context) => DashboardScreen(
                                             selectedIndex:
-                                                screens.indexOf(auctionScreen),
+                                                screens.indexOf(ordersScreen),
                                             index: 1000,
                                             visibleWidget: UpdateTruckScreen(
                                               driverName: widget.driverName,
@@ -417,7 +417,7 @@ class _UpdateBookingDetailsState extends State<UpdateBookingDetails> {
                 ),
               ),
             ))
-    //Ui for Mobile
+        //Ui for Mobile
         : Scaffold(
             appBar: AppBar(
               title: HeadingTextWidgetBlue('confirmBookingDetails'.tr),
