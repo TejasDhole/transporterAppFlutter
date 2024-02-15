@@ -33,6 +33,7 @@ class _AddInvoiceDialogState extends State<AddInvoiceDialog> {
   static TextEditingController invoiceBalanceController =
       TextEditingController();
   static String transporterId = '';
+  static String postLoadId = "";
   static String transporterName = '';
   List<Map<String, dynamic>> invoices = [];
   Uint8List? fileBytes;
@@ -216,6 +217,7 @@ class _AddInvoiceDialogState extends State<AddInvoiceDialog> {
                                 invoiceDateController.text,
                                 invoiceBalanceController.text,
                                 selectedBookings,
+                                postLoadId,
                               );
                               // once invoice is created for that particular bookings then we have to update the bookings list and make completed status = true
                               for (var bookingIds in selectedBookings) {
@@ -867,6 +869,9 @@ class _AddInvoiceDialogState extends State<AddInvoiceDialog> {
                                                 selectedBookingRate
                                                     .add(invoice['rate']!);
                                               }
+                                              // Add postLoadId to selectedPostLoadIds
+                                              postLoadId =
+                                                  (invoice['postLoadId']);
                                             } else {
                                               selectedBookings
                                                   .remove(invoice['bookingId']);
@@ -874,6 +879,8 @@ class _AddInvoiceDialogState extends State<AddInvoiceDialog> {
                                                 selectedBookingRate
                                                     .remove(invoice['rate']!);
                                               }
+                                              // Remove postLoadId from selectedPostLoadIds
+                                              postLoadId = "";
                                             }
 
                                             _updateInvoiceBalance(

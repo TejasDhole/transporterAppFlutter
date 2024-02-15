@@ -84,41 +84,70 @@ class _InvoiceDetailsDialogState extends State<InvoiceDetailsDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.4,
-          ),
-          Expanded(
-            child: Text(
-              'Invoice.png',
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                color: Colors.black,
-                fontSize: 18,
-              ),
-              textAlign: TextAlign.center,
+      title: docLinks.isNotEmpty
+          ? Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                ),
+                Expanded(
+                  child: Text(
+                    'Invoice.png',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            )
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.1,
+                ),
+                Expanded(
+                  child: Text(
+                    'Invoice.png',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.1,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
             ),
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.4,
-          ),
-          IconButton(
-            icon: const Icon(Icons.close),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          )
-        ],
-      ),
       content: loading
           ? const Center(child: CircularProgressIndicator())
           : Container(
               color: white,
               width: docLinks.isNotEmpty
                   ? MediaQuery.of(context).size.width * 0.8
-                  : MediaQuery.of(context).size.width * 0.2,
+                  : MediaQuery.of(context).size.width * 0.1,
               height: docLinks.isEmpty
                   ? MediaQuery.of(context).size.height * 0.15
                   : MediaQuery.of(context).size.height * 0.6,

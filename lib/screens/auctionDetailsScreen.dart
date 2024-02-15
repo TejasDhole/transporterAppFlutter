@@ -499,8 +499,8 @@ class _AuctionDetailScreenState extends State<AuctionDetailScreen> {
         bottomProgressLoad = true;
       });
     }
-    http.Response response = await http
-        .get(Uri.parse('$loadApiUrl?postLoadId=$transporterId&pageNo=$i'));
+    http.Response response =
+        await http.get(Uri.parse('$loadApiUrl?&pageNo=$i'));
     print(
         'this is bidding screen api call: $loadApiUrl?postLoadId=$transporterId&pageNo=$i');
     var jsonData = json.decode(response.body);
